@@ -10,11 +10,12 @@ require_once 'syncZoho.php';
 
 if (isset($_SERVER['REQUEST_METHOD']) && (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST' || strtoupper($_SERVER['REQUEST_METHOD']) === 'GET')) {
     if (isset($_REQUEST['security_token']) && $_REQUEST['security_token'] === 'gatekeeper404') {
-        $contact_email = urldecode(trim($_REQUEST['email']));
+        /*$contact_email = urldecode(trim($_REQUEST['email']));*/
+        $contact_id = urldecode(trim($_REQUEST['id']));
         $product_name = urldecode(trim($_REQUEST['product_name']));
 
-        if ($contact_email !== '' && $product_name !== '') {
-            addRelatedProductsWithZohoContact($contact_email, $product_name);
+        if ($contact_id !== '' && $product_name !== '') {
+            addRelatedProductsWithZohoContact($contact_id, $product_name);
         }
     }
 }

@@ -5,8 +5,6 @@
  *
  */
 
-include_once 'Utilities.php';
-
 abstract class ZohoIntegrator
 {
     private $zohoApiUrl;
@@ -317,7 +315,7 @@ abstract class ZohoIntegrator
             curl_setopt($ch, CURLOPT_POST, 1);
             /*To activate RC4-SHA which causes the SSL connection error
             **Zoho uses RC4-SHA, which was not enabled in cURL by default*/
-            curl_setopt( $ch, CURLOPT_SSL_CIPHER_LIST, 'rsa_rc4_128_sha' );
+            //curl_setopt( $ch, CURLOPT_SSL_CIPHER_LIST, 'rsa_rc4_128_sha' );
             /* add POST fields parameters */
             curl_setopt($ch, CURLOPT_POSTFIELDS, $this->uriParameter);
             /* execute the cURL */

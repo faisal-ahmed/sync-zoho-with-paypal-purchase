@@ -1,5 +1,6 @@
 <?php
 
+include_once 'Utilities.php';
 include_once 'ZohoIntegrator.php';
 
 class ZohoDataSync extends ZohoIntegrator
@@ -40,7 +41,6 @@ class ZohoDataSync extends ZohoIntegrator
         return $this->doRequest();
     }
 
-    //Sample XML xmlData=<Products><row no="2"><FL val="PRODUCTID">847862000000082102</FL></row></Products>
     public function addRelatedRecords($moduleName, $id, $relatedModule, $xmlArray)
     {
         $this->resetWithDefaults();
@@ -56,14 +56,6 @@ class ZohoDataSync extends ZohoIntegrator
         $this->setZohoExtendedUriParameter($extraParameter);
 
         return $this->doRequest();
-    }
-
-    public function errorFound($xml) {
-        if ((isset($xml->nodata->code) && trim($xml->nodata->code) !== "")
-            || (isset($xml->error->code) && trim($xml->error->code) !== "")) {
-            return true;
-        }
-        return false;
     }
 }
 
