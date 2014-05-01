@@ -7,6 +7,7 @@
  */
 
 require_once 'syncZoho.php';
+require_once 'updateCasesStatus.php';
 
 if (isset($_SERVER['REQUEST_METHOD']) && (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST' || strtoupper($_SERVER['REQUEST_METHOD']) === 'GET')) {
     if (isset($_REQUEST['security_token']) && $_REQUEST['security_token'] === 'gatekeeper404') {
@@ -16,6 +17,12 @@ if (isset($_SERVER['REQUEST_METHOD']) && (strtoupper($_SERVER['REQUEST_METHOD'])
 
         if ($contact_id !== '' && $product_name !== '') {
             addRelatedProductsWithZohoContact($contact_id, $product_name);
+        }
+    } else if (isset($_REQUEST['security_token']) && $_REQUEST['security_token'] === 'gatekeeperCasesStatus') {
+        $cases_id = urldecode(trim($_REQUEST['id']));
+
+        if ($cases_id !== '') {
+            updateCaseStatus($cases_id);
         }
     }
 }

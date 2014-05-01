@@ -24,4 +24,10 @@ define("EVENT_MODULE", "Events");
 define("TASK_MODULE", "Tasks");
 define("CALL_MODULE", "Calls");
 
+function debug($data){
+    echo "<pre>";
+    print_r($data);
+    echo "</pre>";
+}
+
 ?>
